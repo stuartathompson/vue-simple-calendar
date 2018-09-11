@@ -96,13 +96,14 @@ flex-direction: column;
 flex-grow: 1;
 ```
 
-Here's a minimal application example for a calendar with no events, but styled with the default theme and the US holidays theme:
+Here's a minimal application example for a calendar with one event, styled with the default theme and the US holidays theme:
 
 ```HTML
 <template>
 	<div id="app">
 		<h1>My Calendar</h1>
 		<calendar-view
+      :events="myEvents"
 			:show-date="showDate"
 			class="theme-default holiday-us-traditional holiday-us-official">
 			<calendar-view-header
@@ -123,7 +124,13 @@ Here's a minimal application example for a calendar with no events, but styled w
 	export default {
 		name: 'app',
 		data: function() {
-			return { showDate: new Date() }
+			return {
+        myEvents: [{
+          startDate: new Date(),
+          title: 'My event'
+        }],
+        showDate: new Date()
+      }
 		},
 		components: {
 			CalendarView,
